@@ -1,7 +1,13 @@
 # Todolist Frontend
 ## Concept
 
-For study about Frontend Development and connect to Backend with API using React</br>
+For study about Frontend Development and connect to Backend with API</br>
+
+-----------------------------------------------------------------------------------------------------</br>
+
+## Tools
+
+Javascript Library to have name is **React** and **RESTful API** for connect to Backend part</br>
 
 -----------------------------------------------------------------------------------------------------</br>
 
