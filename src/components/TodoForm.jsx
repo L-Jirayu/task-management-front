@@ -20,7 +20,7 @@ function TodoForm(props) {
 
   return (
     <form className="todo-form" onSubmit={handleSubmit}>
-      {props.edit && props.edit.value && (
+      {props.edit?.value && (
         <div style={{ color: '#00ffff', marginBottom: '10px' }}>
           กำลังแก้ไขกิจกรรม: {props.edit.value}
         </div>

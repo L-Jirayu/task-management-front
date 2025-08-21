@@ -7,23 +7,22 @@ function Todo({ todos, completeTodo, removeTodo, setEdit }) {
   return todos.map(todo => (
     <div className={todo.status ? 'todo-row' : 'todo-row complete'} key={todo._id}>
       <div onClick={() => completeTodo(todo._id)}>
-        {todo.name?.th || 'ไม่มีข้อมูล'}
+        {todo.name || 'ไม่มีข้อมูล'}
       </div>
       <div className='icons'>
         <AiFillCloseSquare
           onClick={() => {
-            if (window.confirm(`คุณแน่ใจหรือไม่ว่าต้องการลบกิจกรรม "${todo.name?.th}" นี้?`)) {
+            if (window.confirm(`คุณแน่ใจหรือไม่ว่าต้องการลบกิจกรรม "${todo.name}" นี้?`)) {
               removeTodo(todo._id);
             }
           }}
           className='delete-icon'
           style={{ color: 'red' }}
         />
-
         <RiEditBoxFill
           onClick={() => {
             if (todo.status) {
-              setEdit({ id: todo._id, value: todo.name?.th || '' });
+              setEdit({ id: todo._id, value: todo.name });
             } else {
               alert('ไม่สามารถแก้ไขกิจกรรมที่ทำเสร็จแล้วได้');
             }
