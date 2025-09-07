@@ -1,3 +1,4 @@
+/* ======= Base (ของเดิม + ปรับแล้ว) ======= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +6,7 @@
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
 }
-  
+
 body {
   background: radial-gradient(
     circle at center,
@@ -20,9 +21,9 @@ body {
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
     'Lucida Sans', Arial, sans-serif;
 }
-  
+
 .todo-app {
-  width: 620px;
+  width: min(1000px, 95vw);              /* ⬅ กว้างขึ้นจาก 620px */
   min-height: 600px;
   background: #000000;
   text-align: center;
@@ -30,19 +31,20 @@ body {
   padding: 32px 24px;
   box-shadow: 0 0 30px rgba(10, 10, 50, 0.7);
 }
-  
+
 h1 {
-  margin: 32px 0;
+  margin: 32px 0 8px;
   color: #fff;
   font-size: 28px;
 }
 
 h2 {
-  margin: 32px 0;
+  margin: 8px 0 24px;
   color: #fff;
   font-size: 16px;
+  opacity: 0.9;
 }
-  
+
 .complete {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
@@ -50,55 +52,50 @@ h2 {
   color: #bbbbbb;
   font-weight: 500;
 }
-  
+
 .todo-form {
-  margin-bottom: 32px;
+  margin-bottom: 24px;
+  text-align: left;
 }
-  
+
 .todo-input {
-  padding: 14px 32px 14px 16px;
-  border-radius: 4px 0 0 4px;
+  padding: 12px 14px;
+  border-radius: 6px;
   border: 2.5px solid #5d0cff;
   outline: none;
-  width: 320px;
+  width: 100%;
   background: transparent;
   color: #fff;
   font-size: 16px;
-  transition: border 0.3s ease;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
 }
-  
+
+.todo-input:focus {
+  border-color: #7a3bff;
+  box-shadow: 0 0 0 3px rgba(93, 12, 255, 0.25);
+}
+
 .todo-input::placeholder {
   color: #e2e2e2;
 }
-  
+
 .todo-button {
-  padding: 16px;
+  padding: 12px 16px;
   border: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 6px;
   cursor: pointer;
   outline: none;
-  background: linear-gradient(
-  90deg,
-  rgb(85, 10, 236) 0%,
-  rgba(85, 10, 236) 100%
-  );
+  background: linear-gradient(90deg, rgb(85, 10, 236) 0%, rgba(85, 10, 236) 100%);
   color: #fff;
   text-transform: capitalize;
 }
-  
-.todo-input.edit {
-  border: 2.5px solid #149fff;
-}
-  
+
+.todo-input.edit { border: 2.5px solid #149fff; }
+
 .todo-button.edit {
-  background: linear-gradient(
-    90deg,
-    rgb(31, 162, 255) 0%,
-    rgba(31, 162, 255) 100%
-  );
-  padding: 16px 22px;
+  background: linear-gradient(90deg, rgb(31, 162, 255) 0%, rgba(31, 162, 255) 100%);
 }
-  
+
 .todo-button:hover,
 .todo-button.edit:hover {
   transform: translateY(-2px);
@@ -111,64 +108,161 @@ h2 {
   flex-wrap: wrap;
   gap: 12px;
 }
-  
+
 .todo-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin: 4px auto;
+  align-items: stretch;
+  margin: 6px auto;
   color: #fff;
   border: 1px solid #333;
-  background: linear-gradient(
-    90deg,
-    #1a1a1a 0%,
-    #222222 100%
-  );
-  padding: 16px;
-  border-radius: 8px;
-  width: 90%;
+  background: linear-gradient(90deg, #1a1a1a 0%, #222222 100%);
+  padding: 14px;
+  border-radius: 10px;
+  width: 100%;                            /* ⬅ เดิม 90% */
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   animation: fadeSlideIn 0.4s ease;
+  gap: 12px;
 }
 
 @keyframes fadeSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .todo-row:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-  
+
 .icons {
   display: flex;
   align-items: center;
   font-size: 24px;
   cursor: pointer;
+  gap: 8px;
 }
-  
+
 .delete-icon {
-  margin-right: 8px;
-  color: #ff6b6b; 
-  transition: color 0.3s ease;
+  color: #ff6b6b;
+  transition: color 0.2s ease;
 }
 
 .edit-icon {
   color: #4dc9ff;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
-.delete-icon:hover {
-  color: #ff1a1a;
+.delete-icon:hover { color: #ff1a1a; }
+.edit-icon:hover   { color: #00bfff; }
+
+/* ======= ฟอร์ม/แสดงผลเสริม ======= */
+.section-title {
+  color: #b8c6ff;
+  font-weight: 700;
+  font-size: 14px;
+  margin: 10px 0 6px;
 }
 
-.edit-icon:hover {
-  color: #00bfff;
+.field-grid { display: grid; gap: 8px; }
+@media (min-width: 560px) {
+  .field-grid.two-col { grid-template-columns: 1fr 1fr; }
+}
+
+textarea.todo-input { resize: vertical; min-height: 84px; line-height: 1.4; }
+
+.row { display: flex; gap: 12px; flex-wrap: wrap; }
+.row .col { flex: 1 1 220px; }
+
+input[type="date"].todo-input { padding: 10px 12px; }
+
+.subtasks {
+  border: 1px dashed #333;
+  border-radius: 8px;
+  padding: 10px;
+  background: rgba(255,255,255,0.02);
+}
+
+.subtasks-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.subtasks-header .todo-button { padding: 8px 12px; border-radius: 6px; }
+
+.subtasks-list { display: grid; gap: 8px; }
+
+.subtask-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.subtask-row label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.subtask-row .todo-button { padding: 8px 10px; background: #cc3344; }
+.subtask-row .todo-button:hover { background: #e23b4f; }
+
+.meta-line {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* ⬅ ลิสต์งานย่อย: เอาจุดออกและไม่เยื้อง */
+.todo-row ul { list-style: none; margin: 4px 0 0 0; padding-left: 0; }
+.todo-row li { line-height: 1.5; }
+
+/* ปุ่มในฟอร์มให้เต็มความกว้าง */
+.todo-form .todo-button { margin-top: 12px; width: 100%; }
+
+/* ช่องค้นหา/ตัวเลือกภาษา */
+.controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; justify-content: center; }
+
+select.language-select {
+  appearance: none;
+  background: #111;
+  color: #fff;
+  border: 2px solid #5d0cff;
+  border-radius: 6px;
+  padding: 10px 12px;
+  min-width: 160px;
+}
+
+/* ========== สองคอลัมน์: ซ้ายฟอร์ม ขวารายการ ========== */
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;       /* ⬅ ขวากว้างขึ้นจาก 1.2fr */
+  gap: 16px;
+  align-items: start;
+}
+
+.pane {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 16px;                          /* ⬅ padding มากขึ้นเล็กน้อย */
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .app-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .todo-app { width: 94vw; padding: 24px 16px; }
+  .todo-row { width: 100%; }
+  .subtask-row { grid-template-columns: 1fr; }
+  .icons { font-size: 22px; }
 }
