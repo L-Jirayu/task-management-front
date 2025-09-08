@@ -1,0 +1,53 @@
+/* src/components/css/LoginPage.css / SignupPage.css */
+.auth-container,
+.login-container,
+.signup-container {
+  width: min(420px, 92vw);
+  margin: 5vh auto;
+  padding: 24px;
+  background: rgba(0,0,0,0.6);
+  border: 1px solid #222;
+  border-radius: 10px;
+  color: #fff;
+  box-shadow: 0 0 20px rgba(10, 10, 50, 0.5);
+}
+
+.auth-container h2,
+.login-container h2,
+.signup-container h2 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.auth-container form input,
+.login-container form input,
+.signup-container form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 8px 0;
+  border-radius: 6px;
+  border: 2px solid #5d0cff;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+
+.auth-container form button,
+.login-container form button,
+.signup-container form button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 12px 16px;
+  border: 0;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #550aec, #550aec);
+  color: #fff;
+  cursor: pointer;
+}
+
+.form-error { color: #ff6b6b; margin-top: 6px; }
+.form-ok { color: #4dff9a; margin-top: 6px; }
+
+.signup-redirect, .login-link {
+  margin-top: 12px; text-align: center; color: #ddd;
+}
