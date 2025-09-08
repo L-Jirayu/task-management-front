@@ -2,52 +2,68 @@
 .auth-container,
 .login-container,
 .signup-container {
-  width: min(420px, 92vw);
-  margin: 5vh auto;
-  padding: 24px;
-  background: rgba(0,0,0,0.6);
+  width: min(540px, 95vw);   /* ⬅️ เดิม 420px → ขยายเป็น 540px */
+  margin: 8vh auto;          /* เว้นด้านบนล่างมากขึ้น */
+  padding: 32px;             /* เดิม 24px → เพิ่ม padding */
+  background: rgba(0,0,0,0.7);
   border: 1px solid #222;
-  border-radius: 10px;
+  border-radius: 12px;
   color: #fff;
-  box-shadow: 0 0 20px rgba(10, 10, 50, 0.5);
+  box-shadow: 0 0 30px rgba(10, 10, 50, 0.6);
 }
 
 .auth-container h2,
 .login-container h2,
 .signup-container h2 {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   text-align: center;
+  font-size: 26px;  /* เดิมไม่มี → เพิ่มให้หัวข้อใหญ่ขึ้น */
 }
 
 .auth-container form input,
 .login-container form input,
 .signup-container form input {
   width: 100%;
-  padding: 12px 14px;
-  margin: 8px 0;
-  border-radius: 6px;
-  border: 2px solid #5d0cff;
+  padding: 14px 16px;   /* เดิม 12px → เพิ่มขนาด */
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 2.5px solid #5d0cff;
   outline: none;
   background: transparent;
   color: #fff;
+  font-size: 16px;      /* เพิ่มขนาด font */
 }
 
 .auth-container form button,
 .login-container form button,
 .signup-container form button {
   width: 100%;
-  margin-top: 12px;
-  padding: 12px 16px;
+  margin-top: 14px;
+  padding: 14px 18px;   /* ปุ่มใหญ่ขึ้น */
   border: 0;
-  border-radius: 6px;
+  border-radius: 8px;
   background: linear-gradient(90deg, #550aec, #550aec);
   color: #fff;
+  font-size: 16px;      /* ปุ่มตัวใหญ่ขึ้น */
+  font-weight: 600;
   cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.form-error { color: #ff6b6b; margin-top: 6px; }
-.form-ok { color: #4dff9a; margin-top: 6px; }
+.auth-container form button:hover,
+.login-container form button:hover,
+.signup-container form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.4);
+}
 
-.signup-redirect, .login-link {
-  margin-top: 12px; text-align: center; color: #ddd;
+.form-error { color: #ff6b6b; margin-top: 6px; font-size: 14px; }
+.form-ok { color: #4dff9a; margin-top: 6px; font-size: 14px; }
+
+.signup-redirect,
+.login-link {
+  margin-top: 14px;
+  text-align: center;
+  color: #ddd;
+  font-size: 15px;
 }
