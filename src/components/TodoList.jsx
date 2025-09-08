@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import TodoForm from './TodoForm';
 import Todo from './Todo';
 import { getTodos, createTodo, updateTodo as updateTodoApi, deleteTodo } from '../api/todoApi';
+import { logoutUser } from '../api/authApi'; // <-- ใช้ตัวนี้สำหรับ logout
 import './interface.css';
 
 function TodoList() {
@@ -10,6 +11,16 @@ function TodoList() {
   const [edit, setEdit] = useState({ id: null, value: '' });
   const [isLoading, setIsLoading] = useState(true);
   const [searchText, setSearchText] = useState('');
+
+  /* ---------- Logout ---------- */
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+    } catch (e) {
+      console.error(e);
+    }
+    window.location.href = '/login';
+  };
 
   /* ---------- Helpers: I18n normalizers ---------- */
   const ensureI18nObject = (val, fallback = '') => {
@@ -76,7 +87,6 @@ function TodoList() {
     const target = todos.find(item => item._id === id);
     if (!target) return;
 
-    // ถ้ามี payload เต็มจากฟอร์ม ใช้และ normalize ให้ครบ; ถ้าไม่มี ให้แก้เฉพาะ name 2 ภาษา
     const body = newValue?.payload
       ? buildPatchBodyFromTarget(target, { ...newValue.payload, status: target.status })
       : buildPatchBodyFromTarget(target, { name: { th: text, en: text }, status: target.status });
@@ -103,12 +113,11 @@ function TodoList() {
     }
   };
 
-  /* ---------- TOGGLE COMPLETE (main task) — ต้องปิดงานย่อยให้หมดก่อน ---------- */
+  /* ---------- TOGGLE COMPLETE (main task) ---------- */
   const completeTodo = async (id) => {
     const target = todos.find(item => item._id === id);
     if (!target) return;
 
-    // ถ้ากำลังจะทำงานหลักให้ "เสร็จ" (status:true -> false) ต้องไม่มี subtask ค้าง (done=false)
     const goingToComplete = !!target.status;
     if (goingToComplete) {
       const hasUndoneSubtask = (target.subtasks || []).some(st => !st?.done);
@@ -129,7 +138,7 @@ function TodoList() {
     }
   };
 
-  /* ---------- TOGGLE SUBTASK (checkbox = ยังไม่เสร็จ ⇒ checked = !done) ---------- */
+  /* ---------- TOGGLE SUBTASK ---------- */
   const toggleSubtask = async (todoId, index, newDone) => {
     const target = todos.find(t => t._id === todoId);
     if (!target) return;
@@ -142,7 +151,6 @@ function TodoList() {
       return copy;
     }));
 
-    // normalize subtasks ทั้งชุด แล้วแก้ชิ้นที่เปลี่ยน
     const normalizedSubs = normalizeSubtasks(target.subtasks).map((s, i) =>
       i === index ? { ...s, done: newDone } : s
     );
@@ -167,8 +175,17 @@ function TodoList() {
 
   return (
     <div>
-      <h1>TodoList Website</h1>
-      <h2>คลิกที่ข้อความ เมื่อคุณทำกิจกรรมนั้นเสร็จสิ้น</h2>
+      {/* Header + Logout */}
+      <div className="app-header">
+        <div className="header-titles">
+          <h1>TodoList Website</h1>
+          <h2>คลิกที่ข้อความ เมื่อคุณทำกิจกรรมนั้นเสร็จสิ้น</h2>
+        </div>
+
+        <button className="logout-btn" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
 
       {/* สองคอลัมน์ */}
       <div className="app-grid">

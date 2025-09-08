@@ -23,7 +23,7 @@ body {
 }
 
 .todo-app {
-  width: min(1000px, 95vw);              /* ⬅ กว้างขึ้นจาก 620px */
+  width: min(1000px, 95vw);
   min-height: 600px;
   background: #000000;
   text-align: center;
@@ -45,6 +45,48 @@ h2 {
   opacity: 0.9;
 }
 
+/* ======= Header + Logout ======= */
+.app-header {
+  /* เดิม: display:flex ... */
+  display: grid;
+  grid-template-columns: 1fr auto 1fr; /* ซ้าย-กลาง-ขวา */
+  align-items: center;
+  margin: 16px 0 8px;
+}
+
+/* กล่องหัวข้อให้อยู่คอลัมน์กลาง และจัดกลางข้อความ */
+.header-titles {
+  grid-column: 2;
+  text-align: center;
+}
+
+.header-titles h1 {
+  margin: 0 0 6px 0;
+}
+
+.header-titles h2 {
+  margin: 0;
+}
+
+/* ปุ่มให้อยู่ขวาสุด */
+.logout-btn {
+  grid-column: 3;
+  justify-self: end;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(90deg, #cc3344 0%, #e64a19 100%);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,.3);
+}
+
+/* ======= etc. เดิมทั้งหมด ======= */
 .complete {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
@@ -119,7 +161,7 @@ h2 {
   background: linear-gradient(90deg, #1a1a1a 0%, #222222 100%);
   padding: 14px;
   border-radius: 10px;
-  width: 100%;                            /* ⬅ เดิม 90% */
+  width: 100%;
   transition: transform 0.2s ease, box-shadow 0.3s ease;
   animation: fadeSlideIn 0.4s ease;
   gap: 12px;
@@ -220,7 +262,7 @@ input[type="date"].todo-input { padding: 10px 12px; }
   opacity: 0.85;
 }
 
-/* ⬅ ลิสต์งานย่อย: เอาจุดออกและไม่เยื้อง */
+/* ลิสต์งานย่อย: เอาจุดออกและไม่เยื้อง */
 .todo-row ul { list-style: none; margin: 4px 0 0 0; padding-left: 0; }
 .todo-row li { line-height: 1.5; }
 
@@ -243,7 +285,7 @@ select.language-select {
 /* ========== สองคอลัมน์: ซ้ายฟอร์ม ขวารายการ ========== */
 .app-grid {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;       /* ⬅ ขวากว้างขึ้นจาก 1.2fr */
+  grid-template-columns: 1fr 1.4fr;
   gap: 16px;
   align-items: start;
 }
@@ -252,7 +294,7 @@ select.language-select {
   background: rgba(255,255,255,0.03);
   border: 1px solid #222;
   border-radius: 10px;
-  padding: 16px;                          /* ⬅ padding มากขึ้นเล็กน้อย */
+  padding: 16px;
 }
 
 /* Responsive */

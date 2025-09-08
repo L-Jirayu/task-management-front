@@ -14,7 +14,6 @@ export default function App() {
   const [booting, setBooting] = useState(true);
 
   useEffect(() => {
-    // เช็ค session จาก cookie
     getUserProfile()
       .then(() => setIsAuthenticated(true))
       .catch(() => setIsAuthenticated(false))
@@ -26,11 +25,11 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/app" replace />} />
+        <Route path="/" element={<Navigate to="/todolist" replace />} />
         <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route
-          path="/app"
+          path="/todolist"
           element={
             <PrivateRoute isAuthenticated={isAuthenticated}>
               <div className="todo-app">
@@ -39,7 +38,8 @@ export default function App() {
             </PrivateRoute>
           }
         />
-        <Route path="*" element={<Navigate to="/app" replace />} />
+        {/* เปลี่ยนเป็นเด้งไป /login กันลูปตอนยังไม่ auth */}
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
   );
