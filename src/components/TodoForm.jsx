@@ -47,7 +47,7 @@ function TodoForm(props) {
         .filter(s => s.th?.trim() || s.en?.trim())
         .map(s => ({
           title: { th: (s.th || '').trim(), en: (s.en || '').trim() },
-          done: true,
+          done: false,
         })),
     };
 
