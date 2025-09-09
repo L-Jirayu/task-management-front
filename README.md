@@ -15,7 +15,15 @@ Javascript Library to have name is **React** and **RESTful API** for connect to 
 
 1.install NodeJS: https://nodejs.org/en/download/current</br>
 2.use git for clone</br>
-3.**npm install** and **npm run dev**</br>
+3.use
+```bash
+npm install
+```
+and</br>
+```bash
+npm run dev
+```
+
 
 -----------------------------------------------------------------------------------------------------
 
