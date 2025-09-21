@@ -19,7 +19,7 @@ function TodoList() {
     } catch (e) {
       console.error(e);
     }
-    window.location.href = '';
+    window.location.href = '/';
   };
 
   /* ---------- Helpers: I18n normalizers ---------- */
