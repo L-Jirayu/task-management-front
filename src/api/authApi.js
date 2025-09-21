@@ -1,5 +1,5 @@
 // src/api/authApi.js
-const API_ORIGIN = 'http://localhost:3000';
+const API_ORIGIN = 'https://minitaskmanage-back.onrender.com';
 
 export async function registerUser(data) {
   const res = await fetch(`${API_ORIGIN}/users/register`, {
