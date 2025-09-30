@@ -1,5 +1,4 @@
-// App.jsx
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import TodoList from './components/TodoList';
 import LoginPage from './components/LoginPage';
 import SignupPage from './components/SignupPage';
@@ -39,6 +38,7 @@ export default function App() {
             </PrivateRoute>
           }
         />
+        {/* เปลี่ยนเป็นเด้งไป /login กันลูปตอนยังไม่ auth */}
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
