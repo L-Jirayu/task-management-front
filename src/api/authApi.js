@@ -2,7 +2,7 @@
 const API_ORIGIN = 'https://minitaskmanage-back.onrender.com';
 
 export async function registerUser(data) {
-  const res = await fetch(`${API_ORIGIN}/api/users/register`, {
+  const res = await fetch(`${API_ORIGIN}/users/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
@@ -13,7 +13,7 @@ export async function registerUser(data) {
 }
 
 export async function loginUser(data) {
-  const res = await fetch(`${API_ORIGIN}/api/auth/login`, {
+  const res = await fetch(`${API_ORIGIN}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include', // สำคัญ: ให้ cookie ไป-กลับ
@@ -24,7 +24,7 @@ export async function loginUser(data) {
 }
 
 export async function logoutUser() {
-  const res = await fetch(`${API_ORIGIN}/api/auth/logout`, {
+  const res = await fetch(`${API_ORIGIN}/auth/logout`, {
     method: 'POST',
     credentials: 'include',
   });
@@ -33,7 +33,7 @@ export async function logoutUser() {
 }
 
 export async function getUserProfile() {
-  const res = await fetch(`${API_ORIGIN}/api/users/profile`, {
+  const res = await fetch(`${API_ORIGIN}/users/profile`, {
     method: 'GET',
     credentials: 'include',
   });
